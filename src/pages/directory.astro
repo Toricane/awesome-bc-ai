@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectSearch from '../components/ProjectSearch';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+---
+
+<Layout title="Directory">
+	<div class="mb-12">
+		<h1 class="text-4xl md:text-5xl font-bold font-display tracking-tight text-white mb-4">Ecosystem Directory</h1>
+		<p class="text-xl text-slate-400 max-w-3xl">
+			Explore the growing list of projects, tools, and archives built by the community. 
+			Filter by category, search for specific terms, or browse tags.
+		</p>
+	</div>
+
+	<ProjectSearch client:load projects={projects} />
+</Layout>

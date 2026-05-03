@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  
+  --color-brand-primary: #a3e635;
+  --color-accent-creative: #06b6d4;
+  --color-accent-ethical: #10b981;
+  --color-accent-tooling: #f97316;
+}
+
+body {
+  @apply bg-slate-900 text-slate-100 font-sans antialiased;
+}
+
+/* Ensure react-select screen reader text stays hidden even if Emotion styles drop during view transitions */
+[id^="react-select-"][id$="-live-region"] {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

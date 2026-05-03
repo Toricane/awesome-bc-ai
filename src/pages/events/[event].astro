@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProjectSearch from '../../components/ProjectSearch';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  const events = new Set(projects.map(p => p.data.event).filter(Boolean));
+  
+  return Array.from(events).map(event => ({
+    params: { event },
+    props: { eventProjects: projects.filter(p => p.data.event === event) },
+  }));
+}
+
+const { event } = Astro.params;
+const { eventProjects } = Astro.props;
+---
+
+<Layout title={`${event} Projects`}>
+	<div class="mb-12">
+    <div class="flex items-center gap-4 mb-4">
+      <a href="/directory" class="text-sm text-slate-400 hover:text-white transition-colors">&larr; Back to Directory</a>
+      <span class="px-3 py-1 text-xs font-semibold rounded-full border border-slate-600 bg-slate-800 text-slate-300">
+        Event Roster
+      </span>
+    </div>
+
+		<h1 class="text-4xl md:text-5xl font-bold font-display tracking-tight text-white mb-4">{event}</h1>
+		<p class="text-xl text-slate-400 max-w-3xl">
+			Projects created and submitted during this event.
+		</p>
+	</div>
+
+	<ProjectSearch client:load projects={eventProjects} />
+</Layout>
