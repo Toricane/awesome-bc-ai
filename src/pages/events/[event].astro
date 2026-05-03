@@ -20,7 +20,7 @@ const { eventProjects } = Astro.props;
 <Layout title={`${event} Projects`}>
 	<div class="mb-12">
     <div class="flex items-center gap-4 mb-4">
-      <a href="/directory" class="text-sm text-slate-400 hover:text-white transition-colors">&larr; Back to Directory</a>
+      <a href={`${import.meta.env.BASE_URL}directory`} class="text-sm text-slate-400 hover:text-white transition-colors">&larr; Back to Directory</a>
       <span class="px-3 py-1 text-xs font-semibold rounded-full border border-slate-600 bg-slate-800 text-slate-300">
         Event Roster
       </span>

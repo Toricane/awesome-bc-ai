@@ -132,7 +132,7 @@ export default function ProjectSearch({ projects }: ProjectSearchProps) {
           const accent = getAccentClass(project.data.category);
           
           return (
-            <a key={project.id} href={`/projects/${project.id}`} className="group block h-full">
+            <a key={project.id} href={`${import.meta.env.BASE_URL}projects/${project.id}`} className="group block h-full">
               <div className={`h-full border border-slate-800 bg-slate-800/40 rounded-xl p-6 backdrop-blur-sm transition-all duration-300 hover:bg-slate-800 hover:-translate-y-1 hover:shadow-lg flex flex-col`}>
                 <div className="flex items-center gap-3 mb-4">
                   {project.data.author_github ? (

@@ -25,10 +25,10 @@ const categories = [
 			An open, static directory for discovering the incredible projects, archives, and tools being built across British Columbia.
 		</p>
 		<div class="flex gap-4 justify-center">
-			<a href="/directory" class="px-8 py-3 rounded-lg bg-brand-primary text-slate-900 font-bold hover:bg-lime-300 transition-colors shadow-[0_0_20px_rgba(163,230,53,0.3)]">
+			<a href={`${import.meta.env.BASE_URL}directory`} class="px-8 py-3 rounded-lg bg-brand-primary text-slate-900 font-bold hover:bg-lime-300 transition-colors shadow-[0_0_20px_rgba(163,230,53,0.3)]">
 				Explore Directory
 			</a>
-			<a href="/add" class="px-8 py-3 rounded-lg border border-slate-700 bg-slate-800 text-white font-medium hover:bg-slate-700 transition-colors">
+			<a href={`${import.meta.env.BASE_URL}add`} class="px-8 py-3 rounded-lg border border-slate-700 bg-slate-800 text-white font-medium hover:bg-slate-700 transition-colors">
 				Submit Project
 			</a>
 		</div>
@@ -56,14 +56,14 @@ const categories = [
 								<span class={`w-2 h-8 rounded-full bg-current ${category.accent}`}></span>
 								{category.name}
 							</h2>
-							<a href={`/directory?category=${encodeURIComponent(category.name)}`} class="text-sm text-slate-400 hover:text-white transition-colors">View All &rarr;</a>
+							<a href={`${import.meta.env.BASE_URL}directory?category=${encodeURIComponent(category.name)}`} class="text-sm text-slate-400 hover:text-white transition-colors">View All &rarr;</a>
 						</div>
 						<p class="text-slate-400 max-w-3xl ml-5 border-l-2 border-slate-700/50 pl-4 py-1 text-sm md:text-base">{category.description}</p>
 					</div>
 					
 					<div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide" style="scrollbar-width: none;">
 						{categoryProjects.map(project => (
-							<a href={`/projects/${project.id}`} class="snap-start flex-none w-[300px] md:w-[400px] group block">
+							<a href={`${import.meta.env.BASE_URL}projects/${project.id}`} class="snap-start flex-none w-[300px] md:w-[400px] group block">
 								<div class={`h-full border border-slate-800 bg-slate-800/40 rounded-xl p-6 backdrop-blur-sm transition-all duration-300 hover:bg-slate-800 hover:-translate-y-1 hover:shadow-lg ${category.accent.replace('text-', 'hover:border-').replace('text-', 'hover:shadow-')}`}>
 									<div class="flex items-center gap-3 mb-4">
 										{project.data.author_github ? (
